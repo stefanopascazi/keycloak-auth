@@ -23,7 +23,7 @@ class Login {
 
     this.getTokenUrl = `${this.config['auth-server-url']}realms/${this.config.realm}/protocol/openid-connect/token`;
     this.getUserinfoUrl = `${this.config['auth-server-url']}realms/${this.config.realm}/protocol/openid-connect/userinfo`;
-    this.getLogoutUrl = `${this.config['auth-server-url']}realms/${this.config.realm}/protocol/openid-connect/logout`
+    this.getLogoutUrl = `${this.config['auth-server-url']}realms/${this.config.realm}/protocol/openid-connect/logout`;
   }
 
   createLoginString = (): string => {
@@ -79,7 +79,7 @@ class Login {
     return data;
   };
 
-  logout = async (refreshtoken: string) : Promise<boolean> =>{
+  logout = async (refreshtoken: string): Promise<boolean> => {
     this.headers = {};
     this.headers = {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -91,13 +91,13 @@ class Login {
     formData.append('client_id', this.config.resource);
 
     await fetch(this.getLogoutUrl, {
-        method: "POST",
-        body: formData.toString(),
-        headers: this.headers
-    })
+      method: 'POST',
+      body: formData.toString(),
+      headers: this.headers,
+    });
 
-    return true
-  }
+    return true;
+  };
 }
 
 export default Login;
