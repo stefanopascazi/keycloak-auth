@@ -12,6 +12,7 @@ class Login {
 
   getTokenUrl: string;
   getUserinfoUrl: string;
+  getLogoutUrl: string;
 
   constructor(config: KeyCloakOIDC, redirect: string = '') {
     this.config = config;
@@ -22,6 +23,7 @@ class Login {
 
     this.getTokenUrl = `${this.config['auth-server-url']}realms/${this.config.realm}/protocol/openid-connect/token`;
     this.getUserinfoUrl = `${this.config['auth-server-url']}realms/${this.config.realm}/protocol/openid-connect/userinfo`;
+    this.getLogoutUrl = `${this.config['auth-server-url']}realms/${this.config.realm}/protocol/openid-connect/logout`
   }
 
   createLoginString = (): string => {
@@ -57,10 +59,6 @@ class Login {
 
     const dataJson = await response.json();
 
-    if (!response.ok || !dataJson) {
-      throw new Error('An Error occurred on request');
-    }
-
     const data: KeycloakTokenResponse | unknown = dataJson;
 
     return data;
@@ -69,7 +67,6 @@ class Login {
   getUserInfo = async (token: string): Promise<any> => {
     this.headers = {};
     this.headers = {
-      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     };
 
@@ -81,6 +78,26 @@ class Login {
 
     return data;
   };
+
+  logout = async (refresh_token: string) : Promise<boolean> =>{
+    this.headers = {};
+    this.headers = {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    };
+
+    const formData = new URLSearchParams();
+
+    formData.append('refresh_token', refresh_token);
+    formData.append('client_id', this.config.resource);
+
+    await fetch(this.getLogoutUrl, {
+        method: "POST",
+        body: formData.toString(),
+        headers: this.headers
+    })
+
+    return true
+  }
 }
 
 export default Login;
