@@ -7,7 +7,7 @@ export interface KeyCloakOIDC {
   'auth-server-url': string;
   'ssl-required': string;
   resource: string;
-  credentials: undefined | Credentials;
+  credentials?: undefined | Credentials;
   'confidential-port': number;
   'public-client': undefined | boolean;
 }
