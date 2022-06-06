@@ -1,5 +1,5 @@
 {
-    "name": "keycloak-login",
+    "name": "keycloak-login-alpha",
     "version": "0.0.1",
     "description": "",
     "main": "lib/index.js",

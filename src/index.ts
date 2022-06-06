@@ -1,7 +1,7 @@
 import { KeyCloakOIDC } from './interface/KeycloakOIDC';
 import fetch, { Response } from 'node-fetch';
 
-export default class KeycloakLogin {
+class KeycloakLogin {
   config: KeyCloakOIDC;
   redirect: string;
 
@@ -52,3 +52,5 @@ export default class KeycloakLogin {
     return data;
   };
 }
+
+export default KeycloakLogin
