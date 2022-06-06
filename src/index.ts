@@ -53,4 +53,4 @@ class KeycloakLogin {
   };
 }
 
-export default KeycloakLogin
+export default KeycloakLogin;
