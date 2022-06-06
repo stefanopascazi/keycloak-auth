@@ -79,7 +79,7 @@ class Login {
     return data;
   };
 
-  logout = async (refresh_token: string) : Promise<boolean> =>{
+  logout = async (refreshtoken: string) : Promise<boolean> =>{
     this.headers = {};
     this.headers = {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -87,7 +87,7 @@ class Login {
 
     const formData = new URLSearchParams();
 
-    formData.append('refresh_token', refresh_token);
+    formData.append('refresh_token', refreshtoken);
     formData.append('client_id', this.config.resource);
 
     await fetch(this.getLogoutUrl, {
