@@ -67,8 +67,11 @@ class Login {
 
     getUserInfo = async (token: string): Promise<any> => {
         this.headers = {}
-        this.headers['Content-Type'] = "application/json"
-        this.headers['Authorization'] = `Bearer ${token}`
+        this.headers = {
+            'Content-Type': "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+        
         const response = await fetch(this.getUserinfoUrl, {
             method: 'POST',
             headers: this.headers,
