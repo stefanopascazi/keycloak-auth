@@ -19,7 +19,11 @@
         "type": "git",
         "url": "git+https://github.com/stefanopascazi/keycloak-login.git"
     },
-    "keywords": ["keycloak", "login", "server"],
+    "keywords": [
+        "keycloak",
+        "login",
+        "server"
+    ],
     "author": "Stefano Pascazi",
     "license": "ISC",
     "bugs": {
@@ -34,5 +38,9 @@
     },
     "files": [
         "lib/**/*"
-    ]
+    ],
+    "dependencies": {
+        "@types/node-fetch": "^2.6.1",
+        "node-fetch": "^3.2.5"
+    }
 }
