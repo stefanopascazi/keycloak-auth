@@ -2,14 +2,13 @@
     "name": "keycloak-login-alpha",
     "version": "0.2.1",
     "description": "",
-    "main": "lib/cjsindex.js",
-    "module": "lib/esm/index.js",
+    "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-        "build": "npm run tsc",
+        "tsc": "tsc -p tsconfig.json",
+        "build": "rm -rf ./lib && npm run tsc",
         "format": "prettier --write \"src/**/*.ts\"",
         "lint": "tslint -p tsconfig.json",
         "prepare": "npm run build",
@@ -17,7 +16,7 @@
         "preversion": "npm run lint",
         "version": "npm run format && git add -A src",
         "postversion": "git push && git push --tags",
-        "local:build": "rm -rf ./lib && npm run lint && npm run format && npm run build"
+        "local:build": "npm run lint && npm run format && npm run build"
     },
     "repository": {
         "type": "git",
