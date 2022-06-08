@@ -1,4 +1,9 @@
-import Login from './classes/Login';
+import Keycloak from './classes/Keycloak';
+import Auth from './classes/Auth';
 import User from './classes/User';
 
-export { Login, User };
+export {
+    Keycloak,
+    Auth,
+    User
+}

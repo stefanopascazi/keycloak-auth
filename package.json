@@ -1,5 +1,5 @@
 {
-    "name": "keycloak-login-alpha",
+    "name": "keycloak-auth",
     "version": "0.3.0",
     "description": "",
     "main": "dist/cjs/index.js",
@@ -25,7 +25,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/stefanopascazi/keycloak-login.git"
+        "url": "git+https://github.com/stefanopascazi/keycloak-auth.git"
     },
     "keywords": [
         "keycloak",
@@ -35,9 +35,9 @@
     "author": "Stefano Pascazi",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/stefanopascazi/keycloak-login/issues"
+        "url": "https://github.com/stefanopascazi/keycloak-auth/issues"
     },
-    "homepage": "https://github.com/stefanopascazi/keycloak-login#readme",
+    "homepage": "https://github.com/stefanopascazi/keycloak-auth#readme",
     "devDependencies": {
         "prettier": "^2.6.2",
         "ts-loader": "^9.3.0",

@@ -4,7 +4,7 @@ import { KeycloakTokenResponse } from '../interface/KeycloakTokenResponse';
 
 type responseMode = 'query' | 'fragment';
 
-class Login {
+class Auth {
   config: KeyCloakOIDC;
   redirect: string;
 
@@ -77,4 +77,4 @@ class Login {
   };
 }
 
-export default Login;
+export default Auth;
