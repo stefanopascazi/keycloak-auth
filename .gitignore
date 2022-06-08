@@ -105,3 +105,6 @@ dist
 
 #ignore compiled root
 /lib
+
+#ignore lock file
+*-lock.json
