@@ -17,9 +17,9 @@ class Auth {
   getLogoutUrl: string;
 
   /**
-   * 
-   * @param config 
-   * @param redirect 
+   *
+   * @param config
+   * @param redirect
    */
   constructor(config: KeyCloakOIDC, redirect: string = '') {
     this.config = config;
@@ -34,8 +34,8 @@ class Auth {
   }
 
   /**
-   * 
-   * @param responsemode 
+   *
+   * @param responsemode
    * @returns string
    */
   createLoginString = (responsemode: responseMode = 'query'): string => {
@@ -47,8 +47,8 @@ class Auth {
   };
 
   /**
-   * 
-   * @param code 
+   *
+   * @param code
    * @returns KeycloakTokenResponse
    */
   getToken = async (code: string): Promise<KeycloakTokenResponse> => {
@@ -77,8 +77,8 @@ class Auth {
   };
 
   /**
-   * 
-   * @param refreshtoken 
+   *
+   * @param refreshtoken
    * @returns boolean
    */
   logout = async (refreshtoken: string): Promise<boolean> => {

@@ -3,15 +3,14 @@ import Auth from './Auth';
 import User from './User';
 
 class Keycloak {
-  
   static config: KeyCloakOIDC;
 
   static redirect: string;
 
   /**
-   * 
-   * @param config 
-   * @param redirect 
+   *
+   * @param config
+   * @param redirect
    */
   static init = (config: KeyCloakOIDC | null = null, redirect: string = ''): void => {
     if (config !== null) {
@@ -21,7 +20,7 @@ class Keycloak {
   };
 
   /**
-   * 
+   *
    * @returns Auth class
    */
   static auth = (): Auth => {
@@ -31,8 +30,8 @@ class Keycloak {
   };
 
   /**
-   * 
-   * @param token 
+   *
+   * @param token
    * @returns User class
    */
   static user = (token: string): User => {
@@ -43,4 +42,3 @@ class Keycloak {
 }
 
 export default Keycloak;
-

@@ -12,9 +12,9 @@ class User {
   getUserinfoUrl: string;
 
   /**
-   * 
-   * @param config 
-   * @param token 
+   *
+   * @param config
+   * @param token
    */
   constructor(config: KeyCloakOIDC, token: string = '') {
     this.config = config;
@@ -28,7 +28,7 @@ class User {
   }
 
   /**
-   * 
+   *
    * @returns user collection
    */
   getInfo = async (): Promise<any> => {
