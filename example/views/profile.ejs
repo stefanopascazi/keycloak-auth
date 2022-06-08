@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Profile | Test SSO with sample client</title>
+</head>
+
+<body style="overflow-wrap: break-word;word-break: break-word; padding:25px">
+    <div>
+        <h2>Profile | Test SSO with sample client</h2>
+    </div>
+    <div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li>ID:
+                <%= data.sub %>
+            </li>
+            <li>name:
+                <%= data.name %>
+            </li>
+            <li>email:
+                <%= data.email %>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <p>
+            <%= JSON.stringify(data) %>
+        </p>
+    </div>
+    <div>
+        <p>
+            <%= subscription %>
+        </p>
+    </div>
+</body>
+
+</html>
