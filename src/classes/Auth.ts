@@ -16,6 +16,11 @@ class Auth {
   getUserinfoUrl: string;
   getLogoutUrl: string;
 
+  /**
+   * 
+   * @param config 
+   * @param redirect 
+   */
   constructor(config: KeyCloakOIDC, redirect: string = '') {
     this.config = config;
     this.redirect = redirect;
@@ -28,6 +33,11 @@ class Auth {
     this.getLogoutUrl = `${this.config['auth-server-url']}realms/${this.config.realm}/protocol/openid-connect/logout`;
   }
 
+  /**
+   * 
+   * @param responsemode 
+   * @returns string
+   */
   createLoginString = (responsemode: responseMode = 'query'): string => {
     return `${this.config['auth-server-url']}realms/${this.config.realm}/protocol/openid-connect/auth?client_id=${
       this.config.resource
@@ -36,6 +46,11 @@ class Auth {
     }&response_mode=${responsemode}&response_type=code&scope=web-origins`;
   };
 
+  /**
+   * 
+   * @param code 
+   * @returns KeycloakTokenResponse
+   */
   getToken = async (code: string): Promise<KeycloakTokenResponse> => {
     const formData = new URLSearchParams();
 
@@ -61,6 +76,11 @@ class Auth {
     return data;
   };
 
+  /**
+   * 
+   * @param refreshtoken 
+   * @returns boolean
+   */
   logout = async (refreshtoken: string): Promise<boolean> => {
     const formData = new URLSearchParams();
 
