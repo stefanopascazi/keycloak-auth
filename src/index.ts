@@ -1,4 +1,4 @@
-import Login from './classes/Login.js';
-import User from './classes/User.js';
+import Login from './classes/Login';
+import User from './classes/User';
 
 export { Login, User };

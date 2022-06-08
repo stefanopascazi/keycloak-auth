@@ -1,4 +1,4 @@
-import { KeyCloakOIDC } from '../interface/KeycloakOIDC.js';
+import { KeyCloakOIDC } from '../interface/KeycloakOIDC';
 import fetch, { Response } from 'node-fetch';
 
 class User {

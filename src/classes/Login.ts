@@ -2,6 +2,8 @@ import { KeyCloakOIDC } from '../interface/KeycloakOIDC';
 import fetch, { Response } from 'node-fetch';
 import { KeycloakTokenResponse } from '../interface/KeycloakTokenResponse';
 
+type responseMode = 'query' | 'fragment';
+
 class Login {
   config: KeyCloakOIDC;
   redirect: string;
@@ -26,12 +28,12 @@ class Login {
     this.getLogoutUrl = `${this.config['auth-server-url']}realms/${this.config.realm}/protocol/openid-connect/logout`;
   }
 
-  createLoginString = (): string => {
+  createLoginString = (responsemode: responseMode = 'query'): string => {
     return `${this.config['auth-server-url']}realms/${this.config.realm}/protocol/openid-connect/auth?client_id=${
       this.config.resource
     }${
       this.redirect !== '' ? `&redirect_uri=${this.redirect}` : ''
-    }&response_mode=query&response_type=code&scope=web-origins`;
+    }&response_mode=${responsemode}&response_type=code&scope=web-origins`;
   };
 
   getToken = async (code: string): Promise<KeycloakTokenResponse> => {
