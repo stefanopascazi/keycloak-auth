@@ -1,4 +1,5 @@
 import { KeyCloakOIDC } from '../interface/KeycloakOIDC';
+import Account from './Account';
 import Auth from './Auth';
 import User from './User';
 
@@ -36,6 +37,17 @@ class Keycloak {
    */
   static user = (token: string): User => {
     const args = new User(Keycloak.config, token);
+
+    return args;
+  };
+
+  /**
+   *
+   * @param redirect
+   * @returns
+   */
+  static account = (redirect: string = ''): Account => {
+    const args = new Account(Keycloak.config, redirect);
 
     return args;
   };

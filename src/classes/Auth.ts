@@ -48,15 +48,44 @@ class Auth {
 
   /**
    *
-   * @param code
+   * @param responsemode
+   * @returns string
+   */
+  createRegistrationString = (responsemode: responseMode = 'query'): string => {
+    return `${this.config['auth-server-url']}realms/${
+      this.config.realm
+    }/protocol/openid-connect/registrations?client_id=${this.config.resource}${
+      this.redirect !== '' ? `&redirect_uri=${this.redirect}` : ''
+    }&response_mode=${responsemode}&response_type=code&scope=web-origins`;
+  };
+
+  /**
+   *
+   * @param code code from response or refresh_token for renew an access_token
+   * @param refresh If true, a call is made to get a new access_token. If False uses the code to get an access_token ( default: false)
    * @returns KeycloakTokenResponse
    */
-  getToken = async (code: string): Promise<KeycloakTokenResponse> => {
+  getToken = async (code: string, refresh: boolean = false): Promise<KeycloakTokenResponse> => {
     const formData = new URLSearchParams();
 
-    formData.append('grant_type', 'authorization_code');
+    if (refresh) {
+      formData.append('grant_type', 'refresh_token');
+    } else {
+      formData.append('grant_type', 'authorization_code');
+    }
+
     formData.append('client_id', this.config.resource);
-    formData.append('code', code);
+
+    if (typeof this.config.credentials !== 'undefined') {
+      formData.append('client_secret', this.config.credentials.secret);
+    }
+
+    if (refresh) {
+      formData.append('refresh_token', code);
+    } else {
+      formData.append('code', code);
+    }
+
     formData.append('redirect_uri', this.redirect);
 
     if (typeof this.config.credentials !== 'undefined') {
@@ -86,6 +115,10 @@ class Auth {
 
     formData.append('refresh_token', refreshtoken);
     formData.append('client_id', this.config.resource);
+
+    if (typeof this.config.credentials !== 'undefined') {
+      formData.append('client_secret', this.config.credentials.secret);
+    }
 
     await fetch(this.getLogoutUrl, {
       method: 'POST',

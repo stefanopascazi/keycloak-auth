@@ -66,6 +66,8 @@
   "exclude": [
     "node_modules",
     "**/__tests__/*",
-    "example"
+    "example",
+    "test",
+    "test2"
   ]
 }

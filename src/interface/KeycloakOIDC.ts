@@ -9,5 +9,6 @@ export interface KeyCloakOIDC {
   resource: string;
   credentials?: undefined | Credentials;
   'confidential-port': number;
-  'public-client': undefined | boolean;
+  'public-client'?: undefined | boolean;
+  'bearer-only'?: undefined | boolean;
 }

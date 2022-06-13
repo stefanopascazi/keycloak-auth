@@ -1,5 +1,6 @@
 import { KeyCloakOIDC } from '../interface/KeycloakOIDC';
 import fetch, { Response } from 'node-fetch';
+import { KeycloakUser } from '../interface/KeycloakUser';
 
 class User {
   config: KeyCloakOIDC;
@@ -36,7 +37,7 @@ class User {
       method: 'POST',
       headers: this.headers,
     });
-    const data = await response.json();
+    const data: KeycloakUser = await response.json();
 
     return data;
   };
