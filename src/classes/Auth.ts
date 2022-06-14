@@ -88,10 +88,6 @@ class Auth {
 
     formData.append('redirect_uri', this.redirect);
 
-    if (typeof this.config.credentials !== 'undefined') {
-      formData.append('secret', this.config.credentials.secret);
-    }
-
     const response: Response = await fetch(this.getTokenUrl, {
       method: 'POST',
       headers: this.headers,
